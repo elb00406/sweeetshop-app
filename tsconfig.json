@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "module": "NodeNext",
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "target": "es6",
+        "skipLibCheck": true,
+        "allowJs": true,
+        "moduleResolution": "nodenext"
+    },
+    "include": ["src/**/*", "src/global.d.ts"], // Какие файлы включать в компиляцию
+    "exclude": ["node_modules"]
+}

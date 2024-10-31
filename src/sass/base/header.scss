@@ -1,0 +1,48 @@
+.header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 60px;
+    padding: 10px 40px;
+
+    // background-color: #fff;
+
+    .logo {
+        // position: absolute;
+        // top: 10px;
+        // left: calc(50% - 50px);
+        height: 55px;
+    }
+
+    .infoBlock {
+        display: flex;
+        align-items: center;
+
+        gap: 50px;
+
+        .contacts {
+            width: 150px;
+        }
+
+        .headerButtons {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+    }
+    .navWrap {
+        display: flex;
+        flex-direction: row;
+
+        gap: 30px;
+
+        a {
+            width: fit-content;
+        }
+    }
+}

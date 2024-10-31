@@ -1,0 +1,49 @@
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+    background-color: #e89517;
+
+    padding: 30px 90px 50px 30px;
+
+    .footerContent {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .footerContact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .contactElem {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                gap: 20px;
+                max-width: 390px;
+            }
+        }
+
+        .footerSocial {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .socialElem {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+
+    .polina {
+        position: absolute;
+        left: 20px;
+        bottom: 15px;
+    }
+}
