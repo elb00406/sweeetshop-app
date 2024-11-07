@@ -5,7 +5,7 @@ export class DeliveryPage extends Component {
     constructor(parent: HTMLElement) {
         super(parent, "div", ["delivery_page"]);
 
-        new Component(this.node, "p", null, "DeliveryPage");
+        new Component(this.node, "p", null, "фыв");
     }
     renderWithUpdate(): void {
         if (!this.stateUpdate) {
