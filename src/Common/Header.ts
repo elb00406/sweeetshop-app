@@ -1,4 +1,5 @@
 import { Component } from '../Abstract/Component';
+import LogicService from '../Services/logicService';
 
 export class Header extends Component {
     constructor(parrent: HTMLElement) {
