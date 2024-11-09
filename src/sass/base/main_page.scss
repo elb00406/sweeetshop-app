@@ -2,7 +2,7 @@
     min-height: 100vh;
 
     .intro {
-        background-image: url('/src/assets/background.png');
+        background-image: url("/src/assets/background.png");
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
@@ -23,6 +23,232 @@
             background: #e89517;
 
             padding: 20px;
+        }
+    }
+}
+
+// // Intro Section
+// .intro {
+//     text-align: center;
+
+//     .name {
+//         font-size: 1.5em;
+//         margin-bottom: 10px;
+//         color: #000;
+//     }
+
+//     .button {
+//         &.primary {
+//             padding: 10px 20px;
+//             background-color: #ff9100;
+//             color: white;
+//             border: none;
+//             border-radius: 8px;
+//             cursor: pointer;
+//             font-size: 1em;
+//             text-decoration: none;
+//             transition: background-color 0.3s;
+
+//             &:hover {
+//                 background-color: #e07d00; // manually darkened shade of #ff9100
+//             }
+//         }
+//     }
+// }
+
+// Catalog Section
+.catalog {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+
+    padding: 100px 0;
+    .catalog-title {
+        font-size: 1.8em;
+        text-align: center;
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    .catalog-categories {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        .category-button {
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: transparent;
+            color: #ff9100;
+            border: 2px solid #ff9100;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #ff9100;
+                color: white;
+            }
+        }
+    }
+
+    .product-list {
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+        flex-wrap: wrap;
+
+        .product-item {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+
+            .product-name {
+                font-size: 1em;
+                margin: 10px 0;
+            }
+
+            .product-price {
+                font-size: 0.9em;
+                color: #000;
+                margin-bottom: 10px;
+            }
+
+            .add-button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                background-color: #ff9100;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #e07d00; // darker shade for hover
+                }
+            }
+        }
+    }
+}
+
+// Delivery Info Section
+.delivery-info {
+    padding: 40px 0;
+
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+    align-items: center;
+    .delivery-title {
+        font-size: 1.8em;
+        text-align: center;
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    .delivery-details {
+        font-size: 0.9em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .delivery-options {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 105px;
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            max-width: 200px;
+
+            .icon-min-order,
+            .icon-delivery,
+            .icon-pickup {
+                font-size: 2em;
+                color: #ff9100;
+                margin-bottom: 10px;
+            }
+
+            .info-image {
+                height: fit-content;
+            }
+            .info-text {
+                font-size: 0.9em;
+            }
+        }
+    }
+}
+
+// Login Section
+.login {
+    background-image: url("/src/assets/background2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px 0;
+    text-align: center;
+
+    .login-title {
+        font-size: 1.8em;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 300px;
+        margin: 0 auto;
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .button {
+            &.primary {
+                width: 100%;
+                padding: 10px;
+                background-color: #ff9100;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #e07d00; // manually darkened shade for hover
+                }
+            }
+        }
+    }
+
+    .register-link {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #ff9100;
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+            color: #e07d00; // darker shade for hover
         }
     }
 }

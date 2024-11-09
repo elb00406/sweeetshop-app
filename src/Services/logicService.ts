@@ -1,18 +1,43 @@
 // src/Services/logicService.ts
-import DBService from './dbService';
-import { Observer } from '../Abstract/Observer';
+import DBService from "./dbService";
+import { Observer } from "../Abstract/Observer";
+import { TGood, TTypeField, TTypeGood, TValueField } from "../Abstract/Types";
 
 export default class LogicService extends Observer {
-    private dbService: DBService;
-
-    constructor(dbService: DBService) {
+    constructor(private dbService: DBService) {
         super();
-        this.dbService = dbService;
     }
 
-    performLogic() {
-        const data = this.dbService.getData();
-        // Dispatch an event named "dataReceived" with the fetched data
-        this.dispatch('dataReceived', data);
+    async getTypesGoods(): Promise<TTypeGood[]> {
+        const data = await this.dbService.getTypesGoods();
+        return data.types;
+    }
+
+    async updateGoodsByType(idGood: number): Promise<void> {
+        const data = await this.dbService.getGoodsByType(idGood);
+        const goods = data.goods;
+        goods.forEach((good) => {
+            (good as TGood)["fields"] = this.joinTypesValues(good.typeField, good.valueFields);
+        });
+        this.dispatch("updateGoodsOnPage", goods);
+    }
+
+    async updateAllGoods(): Promise<void> {
+        const data = await this.dbService.getAllGoods();
+        this.dispatch("updateGoodsOnPage", data.goods);
+
+        console.log("All goods updated successfully");
+    }
+
+    private joinTypesValues(
+        arrTypes: TTypeField[],
+        arrValues: TValueField[],
+    ): Record<string, string | number | Date> {
+        const lenArr = arrTypes.length;
+        const goodJson = {} as Record<string, string | number | Date>;
+        for (let index = 0; index < lenArr; index++) {
+            goodJson[arrTypes[index][1]] = arrValues[index][1];
+        }
+        return goodJson;
     }
 }

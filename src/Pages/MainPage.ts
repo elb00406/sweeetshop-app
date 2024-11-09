@@ -1,6 +1,9 @@
 import { Component } from "../Abstract/Component";
 import { Catalog } from "../Common/Catalog";
+import { DeliveryInfo } from "../Common/DeliveryInfo ";
 import { Intro } from "../Common/Intro";
+import { Login } from "../Common/Login";
+import LogicService from "../Services/logicService";
 
 export class MainPage extends Component {
     stateUpdate: boolean = false;
@@ -9,6 +12,8 @@ export class MainPage extends Component {
 
         new Intro(this.node);
         new Catalog(this.node);
+        new DeliveryInfo(this.node);
+        new Login(this.node);
     }
 
     renderWithUpdate(): void {

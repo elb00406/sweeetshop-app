@@ -1,7 +1,7 @@
-import { App } from './App';
-import './styles.scss';
-import DBService from './Services/dbService';
-import LogicService from './Services/logicService';
+import { App } from "./App";
+import "./styles.scss";
+import DBService from "./Services/dbService";
+import LogicService from "./Services/logicService";
 
 const app = new App(document.body);
 
@@ -12,5 +12,3 @@ const logicService = new LogicService(dbService);
 window.app = app;
 window.dbService = dbService;
 window.logicService = logicService;
-
-logicService.performLogic();

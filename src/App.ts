@@ -11,8 +11,8 @@ import { PersonalAccountPage } from "./Pages/PersonalAccountPage";
 import DBService from "./Services/dbService";
 import LogicService from "./Services/logicService";
 
-// const dbService = new DBService();
-// const logicService = new LogicService(dbService);
+const dbService = new DBService();
+const logicService = new LogicService(dbService);
 
 export class App {
     constructor(parrent: HTMLElement) {
@@ -25,7 +25,7 @@ export class App {
         const links = {
             "#": new MainPage(main.node),
             "#account": new PersonalAccountPage(main.node),
-            "#catalog": new CatalogPage(main.node),
+            "#catalog": new CatalogPage(main.node, logicService),
             "#delivery": new DeliveryPage(main.node),
             "#cart": new CartPage(main.node),
         };
