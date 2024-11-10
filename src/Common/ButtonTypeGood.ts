@@ -7,6 +7,8 @@ export class ButtonTypeGood extends Component {
 
         this.node.onclick = () => {
             console.log("Button clicked for type:", typeGood);
+
+            service.updateGoodsByType(Number(typeGood.id));
         };
     }
 }

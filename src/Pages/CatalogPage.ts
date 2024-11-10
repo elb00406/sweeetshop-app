@@ -7,6 +7,7 @@ import LogicService from "../Services/logicService";
 export class CatalogPage extends Component {
     stateUpdate: boolean = false;
 
+    private data: Component | null = null;
     private divButtons: Component | null = null;
     private divGoods: Component | null = null;
     constructor(parent: HTMLElement, private service: LogicService) {
@@ -14,8 +15,9 @@ export class CatalogPage extends Component {
 
         new Component(this.node, "p", null, "Страница Каталога");
 
-        this.divButtons = new Component(this.node, "div", ["button_container"]);
-        this.divGoods = new Component(this.node, "div", ["goods_container"]);
+        this.data = new Component(this.node, "div", ["data_container"]);
+        this.divButtons = new Component(this.data.node, "div", ["button_container"]);
+        this.divGoods = new Component(this.data.node, "div", ["goods_container"]);
 
         service.addListener("updateGoodsOnPage", (goods) => {
             if (goods) this.updateGoodsOnPage(goods as TGood[]);
@@ -44,10 +46,19 @@ export class CatalogPage extends Component {
     updateGoodsOnPage(goods: any[]): void {
         const divGoods = this.divGoods;
         if (divGoods) {
-            divGoods.node.innerHTML = ""; // Clear previous goods
+            divGoods.node.innerHTML = "";
+
+            if (!goods || goods.length === 0) {
+                const noGoodsMessage = new Component(
+                    divGoods.node,
+                    "p",
+                    ["no-goods-message"],
+                    "Нет товаров",
+                );
+                return;
+            }
 
             goods.forEach((good) => {
-                // Render each good item
                 new GoodItem(divGoods.node, this.service, good);
             });
         }

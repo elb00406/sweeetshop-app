@@ -2,4 +2,35 @@
     padding-top: 75px;
 
     min-height: 100vh;
+
+    .data_container,
+    .button_container,
+    .goods_container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 500px;
+        gap: 10px;
+    }
+
+    .type_good_button {
+        border-radius: 8px;
+        background-color: #e89517;
+        color: #fff;
+
+        border: none;
+        outline: none;
+        padding: 15px 20px;
+
+        &:hover {
+            background-color: #d48817;
+        }
+    }
+
+    .good_item {
+        background-color: #eee;
+        border: 1px solid #d48817;
+        border-radius: 8px;
+
+        padding: 10px;
+    }
 }

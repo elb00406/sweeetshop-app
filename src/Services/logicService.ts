@@ -15,6 +15,8 @@ export default class LogicService extends Observer {
 
     async updateGoodsByType(idGood: number): Promise<void> {
         const data = await this.dbService.getGoodsByType(idGood);
+
+        console.log(idGood);
         const goods = data.goods;
         goods.forEach((good) => {
             (good as TGood)["fields"] = this.joinTypesValues(good.typeField, good.valueFields);
@@ -33,9 +35,12 @@ export default class LogicService extends Observer {
         arrTypes: TTypeField[],
         arrValues: TValueField[],
     ): Record<string, string | number | Date> {
-        const lenArr = arrTypes.length;
+        if (!arrTypes || !arrValues || arrTypes.length !== arrValues.length) {
+            return {};
+        }
+
         const goodJson = {} as Record<string, string | number | Date>;
-        for (let index = 0; index < lenArr; index++) {
+        for (let index = 0; index < arrTypes.length; index++) {
             goodJson[arrTypes[index][1]] = arrValues[index][1];
         }
         return goodJson;
