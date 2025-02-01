@@ -1,3 +1,4 @@
+// src/Pages/MainPage.ts
 import { Component } from "../Abstract/Component";
 import { Catalog } from "../Common/Catalog";
 import { DeliveryInfo } from "../Common/DeliveryInfo ";
@@ -7,12 +8,13 @@ import LogicService from "../Services/logicService";
 
 export class MainPage extends Component {
     stateUpdate: boolean = false;
-    constructor(parent: HTMLElement) {
+    private service: LogicService;
+
+    constructor(parent: HTMLElement, service: LogicService) {
         super(parent, "div", ["main_page"]);
+        this.service = service;
 
         new Intro(this.node);
-        new Catalog(this.node);
-        new DeliveryInfo(this.node);
         new Login(this.node);
     }
 

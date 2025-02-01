@@ -7,6 +7,10 @@ export class ButtonTypeGood extends Component {
 
         this.node.onclick = () => {
             console.log("Button clicked for type:", typeGood);
+            const buttons = document.querySelectorAll(".type_good_button");
+            buttons.forEach((button) => button.classList.remove("active"));
+
+            this.node.classList.add("active");
 
             service.updateGoodsByType(Number(typeGood.id));
         };

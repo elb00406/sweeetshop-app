@@ -1,11 +1,12 @@
 import { Component } from "../Abstract/Component";
+import { DeliveryInfo } from "../Common/DeliveryInfo ";
 
 export class DeliveryPage extends Component {
     stateUpdate: boolean = false;
     constructor(parent: HTMLElement) {
         super(parent, "div", ["delivery_page"]);
 
-        new Component(this.node, "p", null, "фыв");
+        new DeliveryInfo(this.node);
     }
     renderWithUpdate(): void {
         if (!this.stateUpdate) {

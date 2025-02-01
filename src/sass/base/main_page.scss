@@ -56,85 +56,60 @@
 //     }
 // }
 
-// Catalog Section
-.catalog {
+.catalog_section {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
     align-items: center;
+    padding: 50px 20px;
+}
 
-    padding: 100px 0;
-    .catalog-title {
-        font-size: 1.8em;
-        text-align: center;
-        color: #000;
-        margin-bottom: 15px;
-    }
+//
+.account_page {
+    padding: 40px 0;
+    // background-image: url("/src/assets/background2.png");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // height: 100vh;
 
-    .catalog-categories {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 20px;
+    // .intro {
+    //     text-align: center;
 
-        .category-button {
-            padding: 5px 10px;
-            font-size: 1em;
-            background-color: transparent;
-            color: #ff9100;
-            border: 2px solid #ff9100;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: center;
+    //     align-items: center;
+    //     margin: 40px;
+    //     padding: 40px;
+    //     gap: 20px;
 
-            &:hover {
-                background-color: #ff9100;
-                color: white;
-            }
-        }
-    }
+    //     background-color: #fff;
 
-    .product-list {
-        display: flex;
-        justify-content: space-around;
-        gap: 15px;
-        flex-wrap: wrap;
+    //     .name {
+    //         font-size: 1.5em;
+    //         margin-bottom: 10px;
+    //         color: #000;
+    //     }
 
-        .product-item {
-            text-align: center;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+    //     .button {
+    //         &.primary {
+    //             padding: 10px 20px;
+    //             background-color: #ff9100;
+    //             color: white;
+    //             border: none;
+    //             border-radius: 8px;
+    //             cursor: pointer;
+    //             font-size: 1em;
+    //             text-decoration: none;
+    //             transition: background-color 0.3s;
 
-            .product-name {
-                font-size: 1em;
-                margin: 10px 0;
-            }
-
-            .product-price {
-                font-size: 0.9em;
-                color: #000;
-                margin-bottom: 10px;
-            }
-
-            .add-button {
-                padding: 8px 12px;
-                font-size: 0.9em;
-                background-color: #ff9100;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-
-                &:hover {
-                    background-color: #e07d00; // darker shade for hover
-                }
-            }
-        }
-    }
+    //             &:hover {
+    //                 background-color: #e07d00; // manually darkened shade of #ff9100
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 // Delivery Info Section

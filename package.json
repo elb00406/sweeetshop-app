@@ -17,9 +17,12 @@
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^5.1.0"
     },
-    "name": "webpack-init",
+    "name": "sweetshop-app-doroshuk",
     "version": "1.0.0",
     "author": "",
     "license": "ISC",
-    "description": ""
+    "description": "",
+    "dependencies": {
+        "firebase": "^11.0.1"
+    }
 }

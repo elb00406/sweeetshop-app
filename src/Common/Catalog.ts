@@ -1,37 +1,94 @@
 import { Component } from "../Abstract/Component";
+import { TGood } from "../Abstract/Types";
+import { ButtonTypeGood } from "./ButtonTypeGood";
+import { GoodItem } from "./GoodItems";
+import LogicService from "../Services/logicService";
 
 export class Catalog extends Component {
-    constructor(parent: HTMLElement) {
-        super(parent, "section", ["catalog"]);
+    private divButtons: Component | null = null;
+    private divGoods: Component | null = null;
+    private carouselContainer: Component | null = null;
+    private scrollAmount = 300;
+
+    constructor(parent: HTMLElement, private service: LogicService) {
+        super(parent, "div", ["catalog_section"]);
 
         new Component(this.node, "h2", ["catalog-title"], "Каталог");
 
-        const categories = new Component(this.node, "div", ["catalog-categories"]);
-        ["Все", "Новинка", "Хит"].forEach((category) => {
-            new Component(categories.node, "button", ["category-button"], category);
+        this.divButtons = new Component(this.node, "div", ["button_container"]);
+
+        this.carouselContainer = new Component(this.node, "div", ["carousel-container"]);
+
+        service.addListener("updateGoodsOnPage", (goods) => {
+            if (goods) this.updateGoodsOnPage(goods as TGood[]);
         });
 
-        const productList = new Component(this.node, "div", ["product-list"]);
+        this.update();
+    }
 
-        const products = [
-            { name: "Пирожное “Муравейник”", price: "4,00р", image: "/assets/муравьишка.png" },
-            { name: "Зефир в шоколаде", price: "2,00р", image: "/assets/marshmallow.png" },
-            { name: "Пирожное “Гламур”", price: "2,00р", image: "/assets/glamour.png" },
-        ];
+    private update(): void {
+        this.service.getTypesGoods().then((typesGoods) => {
+            typesGoods.forEach((typeGood) => {
+                if (this.divButtons) {
+                    new ButtonTypeGood(this.divButtons.node, this.service, typeGood);
+                }
+            });
 
-        products.forEach((product) => {
-            const productItem = new Component(productList.node, "div", ["product-item"]);
-            new Component(
-                productItem.node,
-                "img",
-                ["product-image"],
-                product.image,
-                ["src", "alt"],
-                [product.image, product.image],
-            );
-            new Component(productItem.node, "div", ["product-name"], product.name);
-            new Component(productItem.node, "div", ["product-price"], product.price);
-            const addButton = new Component(productItem.node, "button", ["add-button"], "Добавить");
+            this.service.updateAllGoods();
         });
+    }
+
+    updateGoodsOnPage(goods: TGood[]): void {
+        const divGoods = this.divGoods;
+        const carouselContainer = this.carouselContainer;
+        if (divGoods) {
+            divGoods.node.innerHTML = "";
+
+            if (!goods || goods.length === 0) {
+                new Component(divGoods.node, "p", ["no-goods-message"], "Нет товаров");
+                return;
+            }
+
+            if (goods.length >= 4 && carouselContainer) {
+                const leftArrow = new Component(
+                    carouselContainer.node,
+                    "button",
+                    ["carousel-arrow", "left-arrow"],
+                    "◀",
+                );
+                leftArrow.node.addEventListener("click", () => this.scrollLeft());
+
+                const rightArrow = new Component(
+                    carouselContainer.node,
+                    "button",
+                    ["carousel-arrow", "right-arrow"],
+                    "▶",
+                );
+                rightArrow.node.addEventListener("click", () => this.scrollRight());
+                this.divGoods = new Component(carouselContainer.node, "div", ["goods_container"]);
+            }
+
+            goods.forEach((good) => {
+                new GoodItem(divGoods.node, this.service, good);
+            });
+        }
+    }
+
+    private scrollLeft(): void {
+        if (this.divGoods) {
+            this.divGoods.node.scrollBy({
+                left: -this.scrollAmount,
+                behavior: "smooth",
+            });
+        }
+    }
+
+    private scrollRight(): void {
+        if (this.divGoods) {
+            this.divGoods.node.scrollBy({
+                left: this.scrollAmount,
+                behavior: "smooth",
+            });
+        }
     }
 }

@@ -23,7 +23,7 @@ export class App {
         const main = new Component(wrap.node, "main");
 
         const links = {
-            "#": new MainPage(main.node),
+            "#": new MainPage(main.node, logicService),
             "#account": new PersonalAccountPage(main.node),
             "#catalog": new CatalogPage(main.node, logicService),
             "#delivery": new DeliveryPage(main.node),
