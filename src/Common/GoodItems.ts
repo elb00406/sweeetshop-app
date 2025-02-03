@@ -1,25 +1,22 @@
-import { Component } from "../Abstract/Component";
-import { TGood } from "../Abstract/Types";
-import LogicService from "../Services/logicService";
+import { Component } from '../Abstract/Component';
+import { TGood } from '../Abstract/Types';
+import LogicService from '../Services/logicService';
 
 export class GoodItem extends Component {
-    constructor(parent: HTMLElement, service: LogicService, good: TGood) {
-        super(parent, "div", ["good_item"]);
+	constructor(parent: HTMLElement, service: LogicService, private good: TGood) {
+		super(parent, 'div', ['good_item']);
+		let priceCurrent = this.good.price / 100;
 
-        const img = new Component(
-            this.node,
-            "img",
-            ["good_image"],
-            null,
-            ["src", "alt"],
-            ["/assets/basket.svg", "good.title"],
-        );
+		const img = new Component(
+			this.node,
+			'img',
+			['good_image'],
+			null,
+			['src', 'alt'],
+			[(this.good as any).photoLink, 'good.title']
+		);
 
-        new Component(this.node, "p", ["good_name"], good.title);
-
-        new Component(this.node, "p", ["good_quantity"], `Количество - ${good.count} шт`);
-        new Component(this.node, "p", ["good_name"], good.title);
-
-        const addButton = new Component(this.node, "button", ["add_button"], "Добавить");
-    }
+		new Component(this.node, 'p', ['good_name'], good.title);
+		new Component(this.node, 'p', ['good__price'], priceCurrent + ' BYN');
+	}
 }
