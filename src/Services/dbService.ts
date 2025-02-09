@@ -3,7 +3,7 @@ import {
 	TIdentificationResponse,
 	TRegistrationResponse,
 	TTypesGoods,
-} from '../Abstract/Types';
+} from '../Abstarct/Types';
 
 export class DBService {
 	private domain = 'https://polyteh.cis.by/cgi-bin/';

@@ -1,0 +1,66 @@
+.footer {
+	background-color: #e89517;
+	padding: 20px 0;
+
+	&-container {
+		text-align: center;
+	}
+
+	&-left {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		width: 230px;
+	}
+
+	&-right {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+
+	// Стили для контактных элементов
+	.contact-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		.contact-icon {
+			width: 24px;
+			height: 24px;
+			object-fit: contain;
+		}
+	}
+
+	// Общие стили для текста
+	.footer-text {
+		color: #000;
+		font-size: 16px;
+		line-height: 1.4;
+		margin: 0;
+
+		&[href] {
+			text-decoration: none;
+			transition: opacity 0.3s;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	// Стили для блока социальных сетей
+	.social-links {
+		display: flex;
+		gap: 15px;
+		justify-content: flex-end;
+		margin-top: 10px;
+	}
+}
+
+.footerLeftRight {
+	padding: 0 15px;
+	display: flex;
+	justify-content: space-between;
+}

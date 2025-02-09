@@ -1,0 +1,44 @@
+.cart {
+	width: 210px;
+	height: 320px;
+
+	padding-left: 15px;
+	padding-top: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	position: relative;
+
+	&__add {
+		color: #fff;
+		background-color: #e89517;
+		padding: 16px 25px;
+		border-radius: 20px;
+		margin-top: auto;
+	}
+
+	&__title {
+		font-size: 16px;
+	}
+
+	&__text {
+		color: #bdbdbd;
+		font-size: 14px;
+	}
+
+	&__price {
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	&__wrapperPrice {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+}
+
+.image__cart {
+	width: 130px;
+	height: 130px;
+}

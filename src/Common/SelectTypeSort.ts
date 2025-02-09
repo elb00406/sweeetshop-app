@@ -1,6 +1,6 @@
-import { LogicService } from '../Services/logicService';
-import { Component } from '../Abstract/Component';
-import { TTypeGood } from '../Abstract/Types';
+import { LogicService } from '../Services/LogicService';
+import { Component } from '../Abstarct/Component';
+import { TTypeGood } from '../Abstarct/Types';
 import { OptionTypeSort } from './OptionTypeSort';
 
 export class SelectTypeSort extends Component {

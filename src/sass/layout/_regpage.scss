@@ -1,0 +1,54 @@
+.reg-page {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 50px 0;
+	gap: 25px;
+	background-image: url('../../assets/bgauth.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	h1 {
+		font-size: 32px;
+		font-weight: bold;
+	}
+
+	div {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+	div > div {
+		display: flex;
+		flex-direction: column;
+
+		label,
+		span {
+			font-size: 20px;
+			font-weight: 500;
+		}
+
+		input {
+			border: 1px solid #d9d9d9;
+			background: #d9d9d9;
+			width: 347px;
+			height: 42px;
+			border-radius: 10px;
+		}
+
+		button {
+			color: #fff;
+			font-size: 20px;
+			font-weight: 500;
+			background: #9dd458;
+			padding: 16px 0;
+			width: 245px;
+			border-radius: 10px;
+		}
+	}
+}
+
+.reg-button {
+	align-items: center;
+}

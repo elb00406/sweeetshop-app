@@ -1,5 +1,5 @@
-import { Observer } from '../Abstract/Observer';
-import { DBService } from './dbService';
+import { Observer } from '../Abstarct/Observer';
+import { DBService } from './DBService';
 import {
 	TGood,
 	TTypeField,
@@ -7,7 +7,7 @@ import {
 	TValueField,
 	TGoodResponse,
 	TCustomer,
-} from '../Abstract/Types';
+} from '../Abstarct/Types';
 
 export class LogicService extends Observer {
 	private originalGoods: TGoodResponse[] | null = null;
@@ -50,7 +50,7 @@ export class LogicService extends Observer {
 			this.filteredGoods = goods;
 		}
 
-		this.dispatch('updateGoodseOnPage', this.filteredGoods);
+		this.disptach('updateGoodseOnPage', this.filteredGoods);
 	}
 
 	private joinTypesWithValues(
@@ -72,7 +72,7 @@ export class LogicService extends Observer {
 			bool ? a.price - b.price : b.price - a.price
 		);
 
-		this.dispatch('updateGoodseOnPage', this.filteredGoods);
+		this.disptach('updateGoodseOnPage', this.filteredGoods);
 	}
 
 	filterItemByTypeSneakers(type: string): void {
@@ -92,15 +92,15 @@ export class LogicService extends Observer {
 			this.sortGoodsByPrice(this.currentSortAsc);
 		}
 
-		this.dispatch('updateGoodseOnPage', this.filteredGoods);
+		this.disptach('updateGoodseOnPage', this.filteredGoods);
 	}
 
 	openPageDetails(good: TGood): void {
-		this.dispatch('updatePageDetails', good);
+		this.disptach('updatePageDetails', good);
 		window.location.hash = '#details';
 	}
 	openPageCatalog(): void {
-		this.dispatch('updateGoodseOnPage');
+		this.disptach('updateGoodseOnPage');
 		window.location.hash = '#catalog';
 	}
 
@@ -115,7 +115,7 @@ export class LogicService extends Observer {
 			.registationCustomer(name, email, mobile, operatorType, adress)
 			.then((response) => {
 				if (response) {
-					this.dispatch('confirm_registration', response);
+					this.disptach('confirm_registration', response);
 				} else {
 					alert('Сбой регистрации');
 				}
@@ -126,7 +126,7 @@ export class LogicService extends Observer {
 			.confirmRegistrationCustomer(customerId, code)
 			.then((response) => {
 				if (response) {
-					this.dispatch('end_registration', response);
+					this.disptach('end_registration', response);
 				} else {
 					alert('Сбой регистрации');
 				}
@@ -135,7 +135,7 @@ export class LogicService extends Observer {
 	identificationCustomer(customerId: string): void {
 		this.dbService.identificationCustomer(customerId).then((response) => {
 			if (response) {
-				this.dispatch('confirm_identification', response);
+				this.disptach('confirm_identification', response);
 			} else {
 				alert('Сбой авторизации');
 			}
@@ -147,7 +147,7 @@ export class LogicService extends Observer {
 			.then((response) => {
 				if (response) {
 					if (response.error.code == 0) this.userCustomer = response.customer;
-					this.dispatch('end_identification', response);
+					this.disptach('end_identification', response);
 				} else {
 					alert('Сбой авторизации');
 				}

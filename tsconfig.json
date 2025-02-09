@@ -1,14 +1,16 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "module": "NodeNext",
-        "outDir": "./dest/",
-        "sourceMap": true,
-        "target": "es6",
-        "skipLibCheck": true,
-        "allowJs": true,
-        "moduleResolution": "nodenext"
-    },
-    "include": ["src/**/*", "src/global.d.ts"], // Какие файлы включать в компиляцию
-    "exclude": ["node_modules"]
+	"compilerOptions": {
+		"strict": true,
+
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
+
+		"downlevelIteration": true,
+		"outDir": "./dest",
+		"sourceMap": true,
+
+		"allowJs": true,
+		"target": "ES6",
+		"skipLibCheck": true
+	}
 }

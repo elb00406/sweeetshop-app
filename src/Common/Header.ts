@@ -1,87 +1,108 @@
-import { Component } from '../Abstract/Component';
-import { LogicService } from '../Services/logicService';
+import { Component } from '../Abstarct/Component';
+import { LogicService } from '../Services/LogicService';
 
 export class Header extends Component {
-	constructor(parrent: HTMLElement) {
-		super(parrent, 'header', ['header']);
+	constructor(parent: HTMLElement, private service: LogicService) {
+		super(parent, 'header', ['header']);
 
-		const nav = new Component(this.root, 'nav', ['nav']);
+		// Левая часть хедера
+		const leftNav = new Component(this.root, 'nav', [
+			'header-nav',
+			'header-nav-left',
+		]);
+		const leftList = new Component(leftNav.root, 'ul', ['nav-list']);
 
-		const navWrap = new Component(nav.root, 'div', ['navWrap']);
-
-		// new Component(navWrap.node, "a", null, "Контакты", ["href"], ["#contacts"]);
-		new Component(navWrap.root, 'a', null, 'Каталог', ['href'], ['#catalog']);
+		// Каталог
+		const catalogItem = new Component(leftList.root, 'li', ['nav-item']);
 		new Component(
-			navWrap.root,
+			catalogItem.root,
 			'a',
-			null,
+			['nav-link'],
+			'Каталог',
+			['href'],
+			['#catalog']
+		);
+
+		// Оплата и доставка
+		const deliveryItem = new Component(leftList.root, 'li', ['nav-item']);
+		new Component(
+			deliveryItem.root,
+			'a',
+			['nav-link'],
 			'Оплата и доставка',
 			['href'],
 			['#delivery']
 		);
 
+		// Центральная часть - логотип
+		const logoWrapper = new Component(this.root, 'div', ['logo-wrapper']);
 		const linkLogo = new Component(
-			this.root,
+			logoWrapper.root,
 			'a',
-			['link__logo'],
+			['link-logo'],
 			null,
 			['href'],
 			['#']
 		);
-
 		new Component(
 			linkLogo.root,
 			'img',
 			['logo'],
 			null,
 			['src', 'alt'],
-			['/assets/png/logo.png', 'лого']
+			['./assets/svg/logo.svg', 'Logo']
 		);
 
-		const infoBlock = new Component(this.root, 'div', ['infoBlock']);
-		new Component(
-			infoBlock.root,
-			'p',
-			['contacts'],
-			'Пн-Вс с 9.00-21.00 +375(29)526-37-56'
-		);
-
-		const headerButtons = new Component(infoBlock.root, 'div', [
-			'headerButtons',
+		// Правая часть хедера
+		const rightNav = new Component(this.root, 'nav', [
+			'header-nav',
+			'header-nav-right',
 		]);
-		const basketButton = new Component(
-			headerButtons.root,
+		const rightList = new Component(rightNav.root, 'ul', ['nav-list']);
+
+		// Телефон
+		const phoneItem = new Component(rightList.root, 'li', ['nav-item']);
+		const divPhone = new Component(phoneItem.root, 'div', ['phone-link']);
+
+		new Component(divPhone.root, 'p', null, 'Пн-Вс с 9.00-21.00');
+		new Component(divPhone.root, 'p', null, '+375(29)526-37-56');
+
+		// Корзина
+		const cartItem = new Component(rightList.root, 'li', ['nav-item']);
+		const cartLink = new Component(
+			cartItem.root,
 			'a',
-			null,
+			['cart-link'],
 			null,
 			['href'],
-			['#cart']
+			['#shopping']
 		);
-		const profileButton = new Component(
-			headerButtons.root,
-			'a',
+		new Component(
+			cartLink.root,
+			'img',
+			['cart-icon'],
 			null,
+			['src', 'alt'],
+			['./assets/svg/basket.svg', 'Корзина']
+		);
+
+		// Профиль
+		const profileItem = new Component(rightList.root, 'li', ['nav-item']);
+		const profileLink = new Component(
+			profileItem.root,
+			'a',
+			['profile-link'],
 			null,
 			['href'],
-			['#account']
+			['#profile']
 		);
-
 		new Component(
-			basketButton.root,
+			profileLink.root,
 			'img',
-			['singleButton'],
+			['profile-icon'],
 			null,
 			['src', 'alt'],
-			['/assets/svg/basket.svg', 'basket']
-		);
-
-		new Component(
-			profileButton.root,
-			'img',
-			['singleButton'],
-			null,
-			['src', 'alt'],
-			['/assets/svg/profile.svg', 'basket']
+			['./assets/svg/prf.svg', 'Профиль']
 		);
 	}
 }

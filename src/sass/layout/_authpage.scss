@@ -1,0 +1,62 @@
+.auth-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px 0;
+	gap: 20px;
+	background-image: url('../../assets/bgauth.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	h1 {
+		font-size: 32px;
+		font-weight: bold;
+	}
+
+	label {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	#inputAuthMobile,
+	#inputAuthCode {
+		border: 1px solid #d9d9d9;
+		background: #d9d9d9;
+		width: 347px;
+		border-radius: 10px;
+		height: 42px;
+		font-size: 18px;
+		padding-left: 15px;
+	}
+
+	#buttonAuthMobile,
+	#buttonAuthCode,
+	#buttonRegRouter {
+		border: 1px solid #d9d9d9;
+		background: #d9d9d9;
+		padding: 11px 22px;
+		border-radius: 10px;
+		font-weight: bold;
+		width: 154px;
+	}
+
+	div > div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 35px;
+	}
+
+	div:not(:first-child) {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		align-items: center;
+
+		p {
+			font-size: 16px;
+			font-weight: bold;
+		}
+	}
+}

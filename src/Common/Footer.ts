@@ -1,105 +1,149 @@
-import { Component } from '../Abstract/Component';
+import { Component } from '../Abstarct/Component';
 
 export class Footer extends Component {
 	constructor(parent: HTMLElement) {
 		super(parent, 'footer', ['footer']);
 
+		const footerContainer = new Component(this.root, 'div', [
+			'footer-container',
+		]);
+
+		const footerLeftRight = new Component(this.root, 'div', [
+			'footerLeftRight',
+		]);
+		// Центральная часть с логотипом
+		const footerCenter = new Component(footerContainer.root, 'div', [
+			'footer-center',
+		]);
+
 		new Component(
-			this.root,
+			footerCenter.root,
 			'img',
-			['logo'],
-			null,
+			['footer-logo'],
+			'',
 			['src', 'alt'],
-			['/assets/png/logo.png', 'лого']
+			['../assets/svg/logo.svg', 'Брестенский Пекарь']
 		);
 
-		new Component(this.root, 'p', ['polina'], 'Дорошук П.В, ЭЛБ-4');
+		const footerLeft = new Component(footerLeftRight.root, 'div', [
+			'footer-left',
+		]);
 
-		const footerContent = new Component(this.root, 'div', ['footerContent']);
-
-		const contact = new Component(footerContent.root, 'div', ['footerContact']);
-		const social = new Component(footerContent.root, 'div', ['footerSocial']);
-
-		const email = new Component(contact.root, 'div', ['contactElem']);
-		const number = new Component(contact.root, 'div', ['contactElem']);
-		const location = new Component(contact.root, 'div', ['contactElem']);
-
+		// Email с иконкой
+		const emailWrapper = new Component(footerLeft.root, 'div', [
+			'contact-item',
+		]);
 		new Component(
-			email.root,
+			emailWrapper.root,
 			'img',
-			['footerContactImg'],
-			null,
+			['contact-icon'],
+			'',
 			['src', 'alt'],
-			['/assets/svg/email.svg', 'email']
+			['../assets/png/mail.png', 'Email']
+		);
+		new Component(
+			emailWrapper.root,
+			'a',
+			['footer-text'],
+			'info@bhp.by',
+			['href'],
+			['mailto:info@bhp.by']
 		);
 
-		new Component(email.root, 'p', null, 'info@bhp.by');
-
+		// Телефон с иконкой
+		const phoneWrapper = new Component(footerLeft.root, 'div', [
+			'contact-item',
+		]);
 		new Component(
-			number.root,
+			phoneWrapper.root,
 			'img',
-			['footerContactImg'],
-			null,
+			['contact-icon'],
+			'',
 			['src', 'alt'],
-			['/assets/svg/number.svg', 'number']
+			['../assets/png/tel.png', 'Phone']
+		);
+		new Component(
+			phoneWrapper.root,
+			'a',
+			['footer-text'],
+			'+375(29)526-37-56',
+			['href'],
+			['tel:+375295263756']
 		);
 
-		new Component(number.root, 'p', null, '+375(29)526-37-56');
-
+		// Адрес с иконкой
+		const addressWrapper = new Component(footerLeft.root, 'div', [
+			'contact-item',
+		]);
 		new Component(
-			location.root,
+			addressWrapper.root,
 			'img',
-			['footerContactImg'],
-			null,
+			['contact-icon'],
+			'',
 			['src', 'alt'],
-			['/assets/svg/location.svg', 'location']
+			['../assets/png/map.png', 'Location']
 		);
-
 		new Component(
-			location.root,
+			addressWrapper.root,
 			'p',
-			null,
+			['footer-text'],
 			'Республика Беларусь, 224014 г. Брест, ул. Писателя Смирнова, 100'
 		);
 
+		new Component(footerLeft.root, 'p', ['footer-text'], 'Дорошук П.В, ЭЛЬ-4');
+
+		// Правая часть с соц. сетями
+		const footerRight = new Component(footerLeftRight.root, 'div', [
+			'footer-right',
+		]);
+
 		new Component(
-			footerContent.root,
-			'img',
-			['footerImg'],
-			null,
-			['src', 'alt'],
-			['/assets/png/biscuiеSet.png', 'biscuiеSet']
+			footerRight.root,
+			'p',
+			['footer-text'],
+			'Мы в социальных сетях:'
 		);
 
-		// social
-
-		new Component(social.root, 'p', null, 'Мы в социальных сетях:');
-
-		const socials = new Component(social.root, 'div', ['socialElem']);
+		const socialLinks = new Component(footerRight.root, 'div', [
+			'social-links',
+		]);
 
 		new Component(
-			socials.root,
+			socialLinks.root,
 			'img',
-			['footerSocial'],
+			null,
 			null,
 			['src', 'alt'],
-			['/assets/png/instagram.png', 'instagram']
+			['../assets/png/inst.png', 'Inst']
 		);
 		new Component(
-			socials.root,
+			socialLinks.root,
 			'img',
-			['footerSocial'],
+			null,
 			null,
 			['src', 'alt'],
-			['/assets/png/tg.png', 'tg']
+			['../assets/png/tg.png', 'Tg']
 		);
 		new Component(
-			socials.root,
+			socialLinks.root,
 			'img',
-			['footerSocial'],
+			null,
 			null,
 			['src', 'alt'],
-			['/assets/png/tiktok.png', 'tiktok']
+			['../assets/png/tt.png', 'TT']
+		);
+
+		const footerRightBg = new Component(footerLeftRight.root, 'div', [
+			'footer-rightBg',
+		]);
+
+		new Component(
+			footerRightBg.root,
+			'img',
+			null,
+			null,
+			['src', 'alt'],
+			['../assets/png/bg-footer.png', 'bg']
 		);
 	}
 }

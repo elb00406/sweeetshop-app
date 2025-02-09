@@ -1,21 +1,28 @@
-// src/Pages/MainPage.ts
-import { Component } from '../Abstract/Component';
-import { Catalog } from '../Common/Catalog';
-import { DeliveryInfo } from '../Common/DeliveryInfo ';
-import { Intro } from '../Common/Intro';
-import { Login } from '../Common/Login';
-import { LogicService } from '../Services/logicService';
+import { Component } from '../Abstarct/Component';
+import { LogicService } from '../Services/LogicService';
 
 export class MainPage extends Component {
 	stateUpdate: boolean = false;
-	private service: LogicService;
+	constructor(parent: HTMLElement, private service: LogicService) {
+		super(parent, 'div', ['main-page']);
 
-	constructor(parent: HTMLElement, service: LogicService) {
-		super(parent, 'div', ['main_page']);
-		this.service = service;
+		const wrapper = new Component(this.root, 'div', ['main-container']);
 
-		new Intro(this.root);
-		new Login(this.root);
+		new Component(
+			wrapper.root,
+			'h1',
+			['main-title'],
+			'ОАО "Берестейский пекарь" - с заботой о каждой крошке!'
+		);
+
+		new Component(
+			wrapper.root,
+			'a',
+			['main-page-button'],
+			'Перейти в каталог',
+			['href'],
+			['#catalog']
+		);
 	}
 
 	renderWithUpdate(): void {

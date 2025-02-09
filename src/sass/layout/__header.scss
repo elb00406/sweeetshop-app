@@ -1,0 +1,24 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+}
+
+.nav {
+	&-list {
+		display: flex;
+		gap: 40px;
+	}
+
+	&-item {
+		display: flex;
+	}
+}
+
+.link {
+	color: #5c5c5c;
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 10px;
+}
