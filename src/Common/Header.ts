@@ -1,18 +1,18 @@
 import { Component } from '../Abstract/Component';
-import LogicService from '../Services/logicService';
+import { LogicService } from '../Services/logicService';
 
 export class Header extends Component {
 	constructor(parrent: HTMLElement) {
 		super(parrent, 'header', ['header']);
 
-		const nav = new Component(this.node, 'nav', ['nav']);
+		const nav = new Component(this.root, 'nav', ['nav']);
 
-		const navWrap = new Component(nav.node, 'div', ['navWrap']);
+		const navWrap = new Component(nav.root, 'div', ['navWrap']);
 
 		// new Component(navWrap.node, "a", null, "Контакты", ["href"], ["#contacts"]);
-		new Component(navWrap.node, 'a', null, 'Каталог', ['href'], ['#catalog']);
+		new Component(navWrap.root, 'a', null, 'Каталог', ['href'], ['#catalog']);
 		new Component(
-			navWrap.node,
+			navWrap.root,
 			'a',
 			null,
 			'Оплата и доставка',
@@ -21,7 +21,7 @@ export class Header extends Component {
 		);
 
 		const linkLogo = new Component(
-			this.node,
+			this.root,
 			'a',
 			['link__logo'],
 			null,
@@ -30,7 +30,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			linkLogo.node,
+			linkLogo.root,
 			'img',
 			['logo'],
 			null,
@@ -38,19 +38,19 @@ export class Header extends Component {
 			['/assets/png/logo.png', 'лого']
 		);
 
-		const infoBlock = new Component(this.node, 'div', ['infoBlock']);
+		const infoBlock = new Component(this.root, 'div', ['infoBlock']);
 		new Component(
-			infoBlock.node,
+			infoBlock.root,
 			'p',
 			['contacts'],
 			'Пн-Вс с 9.00-21.00 +375(29)526-37-56'
 		);
 
-		const headerButtons = new Component(infoBlock.node, 'div', [
+		const headerButtons = new Component(infoBlock.root, 'div', [
 			'headerButtons',
 		]);
 		const basketButton = new Component(
-			headerButtons.node,
+			headerButtons.root,
 			'a',
 			null,
 			null,
@@ -58,7 +58,7 @@ export class Header extends Component {
 			['#cart']
 		);
 		const profileButton = new Component(
-			headerButtons.node,
+			headerButtons.root,
 			'a',
 			null,
 			null,
@@ -67,7 +67,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			basketButton.node,
+			basketButton.root,
 			'img',
 			['singleButton'],
 			null,
@@ -76,7 +76,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			profileButton.node,
+			profileButton.root,
 			'img',
 			['singleButton'],
 			null,

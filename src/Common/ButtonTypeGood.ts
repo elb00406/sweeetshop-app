@@ -1,18 +1,34 @@
-import { Component } from "../Abstract/Component";
-import LogicService from "../Services/logicService";
+import { TTypeGood } from '../Abstract/Types';
+import { LogicService } from '../Services/logicService';
+import { Component } from '../Abstract/Component';
 
 export class ButtonTypeGood extends Component {
-    constructor(parent: HTMLElement, private service: LogicService, typeGood: any) {
-        super(parent, "button", ["type_good_button"], typeGood.title);
+	private static activeButton: ButtonTypeGood | null = null;
 
-        this.node.onclick = () => {
-            console.log("Button clicked for type:", typeGood);
-            const buttons = document.querySelectorAll(".type_good_button");
-            buttons.forEach((button) => button.classList.remove("active"));
+	constructor(
+		parent: HTMLElement,
+		service: LogicService,
+		private typeGood: TTypeGood
+	) {
+		super(parent, 'button', ['criteria__button'], typeGood.title);
 
-            this.node.classList.add("active");
+		this.root.onclick = () => {
+			if (ButtonTypeGood.activeButton) {
+				ButtonTypeGood.activeButton.removeActiveClass();
+			}
 
-            service.updateGoodsByType(Number(typeGood.id));
-        };
-    }
+			ButtonTypeGood.activeButton = this;
+			this.addActiveClass();
+			service.updateGoodsByType(typeGood.id.toString());
+			console.log(typeGood.id);
+		};
+	}
+
+	private addActiveClass() {
+		this.root.classList.add('_active');
+	}
+
+	private removeActiveClass() {
+		this.root.classList.remove('_active');
+	}
 }

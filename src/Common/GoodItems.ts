@@ -1,6 +1,6 @@
 import { Component } from '../Abstract/Component';
 import { TGood } from '../Abstract/Types';
-import LogicService from '../Services/logicService';
+import { LogicService } from '../Services/logicService';
 
 export class GoodItem extends Component {
 	constructor(parent: HTMLElement, service: LogicService, private good: TGood) {
@@ -8,7 +8,7 @@ export class GoodItem extends Component {
 		let priceCurrent = this.good.price / 100;
 
 		const img = new Component(
-			this.node,
+			this.root,
 			'img',
 			['good_image'],
 			null,
@@ -16,7 +16,7 @@ export class GoodItem extends Component {
 			[(this.good as any).photoLink, 'good.title']
 		);
 
-		new Component(this.node, 'p', ['good_name'], good.title);
-		new Component(this.node, 'p', ['good__price'], priceCurrent + ' BYN');
+		new Component(this.root, 'p', ['good_name'], good.title);
+		new Component(this.root, 'p', ['good__price'], priceCurrent + ' BYN');
 	}
 }

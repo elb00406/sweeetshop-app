@@ -2,7 +2,7 @@ import { Component } from '../Abstract/Component';
 import { TGood } from '../Abstract/Types';
 import { ButtonTypeGood } from './ButtonTypeGood';
 import { GoodItem } from './GoodItems';
-import LogicService from '../Services/logicService';
+import { LogicService } from '../Services/logicService';
 
 export class Catalog extends Component {
 	private divButtons: Component | null = null;
@@ -13,11 +13,11 @@ export class Catalog extends Component {
 	constructor(parent: HTMLElement, private service: LogicService) {
 		super(parent, 'div', ['catalog_section']);
 
-		new Component(this.node, 'h2', ['catalog-title'], 'Каталог');
+		new Component(this.root, 'h2', ['catalog-title'], 'Каталог');
 
-		this.divButtons = new Component(this.node, 'div', ['button_container']);
+		this.divButtons = new Component(this.root, 'div', ['button_container']);
 
-		this.carouselContainer = new Component(this.node, 'div', [
+		this.carouselContainer = new Component(this.root, 'div', [
 			'carousel-container',
 		]);
 
@@ -32,11 +32,11 @@ export class Catalog extends Component {
 		this.service.getTypesGoods().then((typesGoods) => {
 			typesGoods.forEach((typeGood) => {
 				if (this.divButtons) {
-					new ButtonTypeGood(this.divButtons.node, this.service, typeGood);
+					new ButtonTypeGood(this.divButtons.root, this.service, typeGood);
 				}
 			});
 
-			this.service.updateAllGoods();
+			this.service.updateGoodsByType('');
 		});
 	}
 
@@ -44,43 +44,43 @@ export class Catalog extends Component {
 		const divGoods = this.divGoods;
 		const carouselContainer = this.carouselContainer;
 		if (divGoods) {
-			divGoods.node.innerHTML = '';
+			divGoods.root.innerHTML = '';
 
 			if (!goods || goods.length === 0) {
-				new Component(divGoods.node, 'p', ['no-goods-message'], 'Нет товаров');
+				new Component(divGoods.root, 'p', ['no-goods-message'], 'Нет товаров');
 				return;
 			}
 
 			if (goods.length >= 4 && carouselContainer) {
 				const leftArrow = new Component(
-					carouselContainer.node,
+					carouselContainer.root,
 					'button',
 					['carousel-arrow', 'left-arrow'],
 					'◀'
 				);
-				leftArrow.node.addEventListener('click', () => this.scrollLeft());
+				leftArrow.root.addEventListener('click', () => this.scrollLeft());
 
 				const rightArrow = new Component(
-					carouselContainer.node,
+					carouselContainer.root,
 					'button',
 					['carousel-arrow', 'right-arrow'],
 					'▶'
 				);
-				rightArrow.node.addEventListener('click', () => this.scrollRight());
-				this.divGoods = new Component(carouselContainer.node, 'div', [
+				rightArrow.root.addEventListener('click', () => this.scrollRight());
+				this.divGoods = new Component(carouselContainer.root, 'div', [
 					'goods_container',
 				]);
 			}
 
 			goods.forEach((good) => {
-				new GoodItem(divGoods.node, this.service, good);
+				new GoodItem(divGoods.root, this.service, good);
 			});
 		}
 	}
 
 	private scrollLeft(): void {
 		if (this.divGoods) {
-			this.divGoods.node.scrollBy({
+			this.divGoods.root.scrollBy({
 				left: -this.scrollAmount,
 				behavior: 'smooth',
 			});
@@ -89,7 +89,7 @@ export class Catalog extends Component {
 
 	private scrollRight(): void {
 		if (this.divGoods) {
-			this.divGoods.node.scrollBy({
+			this.divGoods.root.scrollBy({
 				left: this.scrollAmount,
 				behavior: 'smooth',
 			});

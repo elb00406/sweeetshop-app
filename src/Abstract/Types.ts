@@ -1,7 +1,7 @@
 export type TTypeGood = {
 	id: number;
 	title: string;
-	typeField: {
+	typeFields: {
 		id: number;
 		title: string;
 		type: number;
@@ -27,7 +27,7 @@ export type TGoodResponse = {
 	photoLink: string;
 	slider: string[];
 	valueFields: TValueField[];
-	typeField: TTypeField[];
+	typeFields: TTypeField[];
 };
 
 export type TGoodsResponse = {
