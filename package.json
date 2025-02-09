@@ -22,6 +22,6 @@
 		"webpack-dev-server": "^5.1.0"
 	},
 	"dependencies": {
-		"firebase": "^11.0.2"
+		"firebase": "^11.3.0"
 	}
 }
